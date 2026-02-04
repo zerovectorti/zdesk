@@ -1,0 +1,16 @@
+name: Print secret
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    name: Print secret
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print secret
+        env:
+          API_SERVER: ${{ secrets.API_SERVER }}
+        run: |
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo "${{secrets.API_SERVER}}" | xxd -ps
